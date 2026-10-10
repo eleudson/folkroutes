@@ -48,6 +48,48 @@ const routes = {
     tokens: [{"old":"/logout","type":0,"val":"logout","end":""}],
     types: placeholder as Registry['session.destroy']['types'],
   },
+  'categories.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/categories',
+    tokens: [{"old":"/categories","type":0,"val":"categories","end":""}],
+    types: placeholder as Registry['categories.index']['types'],
+  },
+  'categories.create': {
+    methods: ["GET","HEAD"],
+    pattern: '/categories/create',
+    tokens: [{"old":"/categories/create","type":0,"val":"categories","end":""},{"old":"/categories/create","type":0,"val":"create","end":""}],
+    types: placeholder as Registry['categories.create']['types'],
+  },
+  'categories.store': {
+    methods: ["POST"],
+    pattern: '/categories',
+    tokens: [{"old":"/categories","type":0,"val":"categories","end":""}],
+    types: placeholder as Registry['categories.store']['types'],
+  },
+  'categories.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/categories/:id',
+    tokens: [{"old":"/categories/:id","type":0,"val":"categories","end":""},{"old":"/categories/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['categories.show']['types'],
+  },
+  'categories.edit': {
+    methods: ["GET","HEAD"],
+    pattern: '/categories/:id/edit',
+    tokens: [{"old":"/categories/:id/edit","type":0,"val":"categories","end":""},{"old":"/categories/:id/edit","type":1,"val":"id","end":""},{"old":"/categories/:id/edit","type":0,"val":"edit","end":""}],
+    types: placeholder as Registry['categories.edit']['types'],
+  },
+  'categories.update': {
+    methods: ["PUT","PATCH"],
+    pattern: '/categories/:id',
+    tokens: [{"old":"/categories/:id","type":0,"val":"categories","end":""},{"old":"/categories/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['categories.update']['types'],
+  },
+  'categories.destroy': {
+    methods: ["DELETE"],
+    pattern: '/categories/:id',
+    tokens: [{"old":"/categories/:id","type":0,"val":"categories","end":""},{"old":"/categories/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['categories.destroy']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }

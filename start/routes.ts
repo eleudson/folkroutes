@@ -11,6 +11,8 @@ import { middleware } from '#start/kernel'
 import { controllers } from '#generated/controllers'
 import router from '@adonisjs/core/services/router'
 
+const CategoriesController = () => import('#controllers/categories_controller')
+
 router.on('/').renderInertia('home', {}).as('home')
 
 router
@@ -39,3 +41,6 @@ router.get('/teste-mapa-single', ({ inertia }) => {
 router.get('/teste-mapa', ({ inertia }) => {
   return inertia.render('map_test')
 })
+
+// CRUD routes of Category
+router.resource('categories', CategoriesController)
