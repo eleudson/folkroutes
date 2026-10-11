@@ -175,4 +175,88 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/categories_controller').default['destroy']>>>
     }
   }
+  'types.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/types'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/types_controller').default['index']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/types_controller').default['index']>>>
+    }
+  }
+  'types.create': {
+    methods: ["GET","HEAD"]
+    pattern: '/types/create'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/types_controller').default['create']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/types_controller').default['create']>>>
+    }
+  }
+  'types.store': {
+    methods: ["POST"]
+    pattern: '/types'
+    types: {
+      body: ExtractBody<InferInput<(typeof import('#validators/type_validator').typeValidator)>>
+      paramsTuple: []
+      params: {}
+      query: ExtractQuery<InferInput<(typeof import('#validators/type_validator').typeValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/types_controller').default['store']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/types_controller').default['store']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
+  'types.show': {
+    methods: ["GET","HEAD"]
+    pattern: '/types/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/types_controller').default['show']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/types_controller').default['show']>>>
+    }
+  }
+  'types.edit': {
+    methods: ["GET","HEAD"]
+    pattern: '/types/:id/edit'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/types_controller').default['edit']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/types_controller').default['edit']>>>
+    }
+  }
+  'types.update': {
+    methods: ["PUT","PATCH"]
+    pattern: '/types/:id'
+    types: {
+      body: ExtractBody<InferInput<(typeof import('#validators/type_validator').typeValidator)>>
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: ExtractQuery<InferInput<(typeof import('#validators/type_validator').typeValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/types_controller').default['update']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/types_controller').default['update']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
+  'types.destroy': {
+    methods: ["DELETE"]
+    pattern: '/types/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/types_controller').default['destroy']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/types_controller').default['destroy']>>>
+    }
+  }
 }

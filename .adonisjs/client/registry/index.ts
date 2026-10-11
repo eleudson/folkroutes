@@ -90,6 +90,48 @@ const routes = {
     tokens: [{"old":"/categories/:id","type":0,"val":"categories","end":""},{"old":"/categories/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['categories.destroy']['types'],
   },
+  'types.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/types',
+    tokens: [{"old":"/types","type":0,"val":"types","end":""}],
+    types: placeholder as Registry['types.index']['types'],
+  },
+  'types.create': {
+    methods: ["GET","HEAD"],
+    pattern: '/types/create',
+    tokens: [{"old":"/types/create","type":0,"val":"types","end":""},{"old":"/types/create","type":0,"val":"create","end":""}],
+    types: placeholder as Registry['types.create']['types'],
+  },
+  'types.store': {
+    methods: ["POST"],
+    pattern: '/types',
+    tokens: [{"old":"/types","type":0,"val":"types","end":""}],
+    types: placeholder as Registry['types.store']['types'],
+  },
+  'types.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/types/:id',
+    tokens: [{"old":"/types/:id","type":0,"val":"types","end":""},{"old":"/types/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['types.show']['types'],
+  },
+  'types.edit': {
+    methods: ["GET","HEAD"],
+    pattern: '/types/:id/edit',
+    tokens: [{"old":"/types/:id/edit","type":0,"val":"types","end":""},{"old":"/types/:id/edit","type":1,"val":"id","end":""},{"old":"/types/:id/edit","type":0,"val":"edit","end":""}],
+    types: placeholder as Registry['types.edit']['types'],
+  },
+  'types.update': {
+    methods: ["PUT","PATCH"],
+    pattern: '/types/:id',
+    tokens: [{"old":"/types/:id","type":0,"val":"types","end":""},{"old":"/types/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['types.update']['types'],
+  },
+  'types.destroy': {
+    methods: ["DELETE"],
+    pattern: '/types/:id',
+    tokens: [{"old":"/types/:id","type":0,"val":"types","end":""},{"old":"/types/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['types.destroy']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }

@@ -23,5 +23,8 @@ declare module '@adonisjs/inertia/types' {
     'home': ExtractProps<(typeof import('../../inertia/pages/home.tsx'))['default']>
     'map_test_single': ExtractProps<(typeof import('../../inertia/pages/map_test_single.tsx'))['default']>
     'map_test': ExtractProps<(typeof import('../../inertia/pages/map_test.tsx'))['default']>
+    'types/create': ExtractProps<(typeof import('../../inertia/pages/types/create.tsx'))['default']>
+    'types/edit': ExtractProps<(typeof import('../../inertia/pages/types/edit.tsx'))['default']>
+    'types/index': ExtractProps<(typeof import('../../inertia/pages/types/index.tsx'))['default']>
   }
 }

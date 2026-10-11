@@ -22,4 +22,13 @@ export interface ApiDefinition {
     update: typeof routes['categories.update']
     destroy: typeof routes['categories.destroy']
   }
+  types: {
+    index: typeof routes['types.index']
+    create: typeof routes['types.create']
+    store: typeof routes['types.store']
+    show: typeof routes['types.show']
+    edit: typeof routes['types.edit']
+    update: typeof routes['types.update']
+    destroy: typeof routes['types.destroy']
+  }
 }

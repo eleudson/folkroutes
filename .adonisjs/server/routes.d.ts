@@ -18,6 +18,13 @@ export type ScannedRoutes = {
     'categories.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'categories.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'categories.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'types.index': { paramsTuple?: []; params?: {} }
+    'types.create': { paramsTuple?: []; params?: {} }
+    'types.store': { paramsTuple?: []; params?: {} }
+    'types.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'types.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'types.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'types.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   GET: {
     'home': { paramsTuple?: []; params?: {} }
@@ -28,6 +35,10 @@ export type ScannedRoutes = {
     'categories.create': { paramsTuple?: []; params?: {} }
     'categories.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'categories.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'types.index': { paramsTuple?: []; params?: {} }
+    'types.create': { paramsTuple?: []; params?: {} }
+    'types.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'types.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   HEAD: {
     'home': { paramsTuple?: []; params?: {} }
@@ -38,21 +49,29 @@ export type ScannedRoutes = {
     'categories.create': { paramsTuple?: []; params?: {} }
     'categories.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'categories.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'types.index': { paramsTuple?: []; params?: {} }
+    'types.create': { paramsTuple?: []; params?: {} }
+    'types.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'types.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   POST: {
     'new_account.store': { paramsTuple?: []; params?: {} }
     'session.store': { paramsTuple?: []; params?: {} }
     'session.destroy': { paramsTuple?: []; params?: {} }
     'categories.store': { paramsTuple?: []; params?: {} }
+    'types.store': { paramsTuple?: []; params?: {} }
   }
   PUT: {
     'categories.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'types.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   PATCH: {
     'categories.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'types.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   DELETE: {
     'categories.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'types.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
 }
 declare module '@adonisjs/core/types/http' {

@@ -12,6 +12,7 @@ import { controllers } from '#generated/controllers'
 import router from '@adonisjs/core/services/router'
 
 const CategoriesController = () => import('#controllers/categories_controller')
+const TypesController = () => import('#controllers/types_controller')
 
 router.on('/').renderInertia('home', {}).as('home')
 
@@ -44,3 +45,6 @@ router.get('/teste-mapa', ({ inertia }) => {
 
 // CRUD routes of Category
 router.resource('categories', CategoriesController)
+
+// CRUD routes of Category
+router.resource('types', TypesController)
