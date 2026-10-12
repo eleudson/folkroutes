@@ -34,5 +34,6 @@ declare module '@adonisjs/inertia/types' {
     'comunities/edit': ExtractProps<(typeof import('../../inertia/pages/comunities/edit.tsx'))['default']>
     'comunities/index': ExtractProps<(typeof import('../../inertia/pages/comunities/index.tsx'))['default']>
     'comunities/show': ExtractProps<(typeof import('../../inertia/pages/comunities/show.tsx'))['default']>
+    'types/show': ExtractProps<(typeof import('../../inertia/pages/types/show.tsx'))['default']>
   }
 }

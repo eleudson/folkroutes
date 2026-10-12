@@ -1,61 +1,67 @@
 import type { HttpContext } from '@adonisjs/core/http'
-import { typeValidator } from '#validators/type_validator'
 import Type from '#models/type'
+import Category from '#models/category'
+import { typeValidator } from '#validators/type_validator'
 
 export default class TypesController {
-  // Lista todas as categorias
+  // 1. Listagem com Categoria Carregada
   async index({ inertia }: HttpContext) {
-    const types = await Type.all()
-    return inertia.render('types/index', { types })
-  }
+    const types = await Type.query().preload('category')
 
-  // Página do formulário de criação
-  async create({ inertia }: HttpContext) {
-    return inertia.render('types/create')
-  }
-
-  // Salva a nova categoria no banco
-  async store({ request, response }: HttpContext) {
-    // O validateUsing intercepta a requisição. Se falhar, ele aborta e devolve os erros pro React.
-    // Se passar, ele retorna os dados já limpos e validados.
-    const data = await request.validateUsing(typeValidator)
-    
-    await Type.create(data)
-    
-    return response.redirect().toRoute('types.index')
-  }
-
-  // Mostra os detalhes
-  async show({ params, inertia }: HttpContext) {
-    const type = await Type.findOrFail(params.id)
-    return inertia.render('types/show', { type })
-  }
-
-  // Página do formulário de edição
-  async edit({ params, inertia }: HttpContext) {
-    const type = await Type.findOrFail(params.id)
-    
-    // O .serialize() pega apenas os dados reais (id, name, description) 
-    // e os envia limpos para o React
-    return inertia.render('types/edit', { 
-      type: type.serialize() 
+    return inertia.render('types/index', {
+      types: types.map((t) => t.serialize()),
     })
   }
 
-  // Atualiza a categoria no banco
+  // 2. Form de Criação (Envia lista de categorias para o dropdown)
+  async create({ inertia }: HttpContext) {
+    const categories = await Category.all()
+
+    return inertia.render('types/create', {
+      categories: categories.map((c) => c.serialize()),
+    })
+  }
+
+  // 3. Salvar Tipo
+  async store({ request, response }: HttpContext) {
+    const payload = await request.validateUsing(typeValidator)
+    await Type.create(payload)
+
+    return response.redirect().toRoute('types.index')
+  }
+
+  // 4. Detalhes do Tipo
+  async show({ params, inertia }: HttpContext) {
+    const type = await Type.query().where('id', params.id).preload('category').firstOrFail()
+
+    return inertia.render('types/show', {
+      type: type.serialize(),
+    })
+  }
+
+  // 5. Form de Edição (Envia o tipo e todas as categorias)
+  async edit({ params, inertia }: HttpContext) {
+    const type = await Type.findOrFail(params.id)
+    const categories = await Category.all()
+
+    return inertia.render('types/edit', {
+      type: type.serialize(),
+      categories: categories.map((c) => c.serialize()),
+    })
+  }
+
+  // 6. Atualizar Tipo
   async update({ params, request, response }: HttpContext) {
     const type = await Type.findOrFail(params.id)
-    
-    // Mesma validação aqui na edição
-    const data = await request.validateUsing(typeValidator)
+    const payload = await request.validateUsing(typeValidator)
 
-    type.merge(data)
+    type.merge(payload)
     await type.save()
 
     return response.redirect().toRoute('types.index')
   }
 
-  // Deleta a categoria
+  // 7. Deletar Tipo
   async destroy({ params, response }: HttpContext) {
     const type = await Type.findOrFail(params.id)
     await type.delete()

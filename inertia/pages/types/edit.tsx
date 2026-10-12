@@ -1,38 +1,59 @@
 import React from 'react'
 import { Link, useForm } from '@inertiajs/react'
 
+interface Category {
+  id: number
+  name: string
+}
+
 interface Type {
   id: number
   name: string
-  description: string | null
+  description: string
+  categoryId: number
 }
 
-export default function Edit({ type }: { type: Type }) {
+export default function Edit({ type, categories }: { type: Type; categories: Category[] }) {
   const { data, setData, put, processing, errors } = useForm({
     name: type.name || '',
     description: type.description || '',
+    categoryId: type.categoryId || '',
   })
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Envia os dados atualizados para a rota de update
     put(`/types/${type.id}`)
   }
 
   return (
     <div style={{ padding: '2rem', fontFamily: 'sans-serif', maxWidth: '600px', margin: '0 auto' }}>
       <h1>Editar Tipo: {type.name}</h1>
-      
+
       <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1.5rem' }}>
         <div>
-          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Nome da Tipo</label>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Categoria Pai</label>
+          <select 
+            value={data.categoryId} 
+            onChange={e => setData('categoryId', Number(e.target.value))}
+            style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
+          >
+            {categories.map((cat) => (
+              <option key={cat.id} value={cat.id}>
+                {cat.name}
+              </option>
+            ))}
+          </select>
+          {errors.categoryId && <div style={{ color: '#dc2626', fontSize: '14px', marginTop: '5px' }}>{errors.categoryId}</div>}
+        </div>
+
+        <div>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Nome do Tipo</label>
           <input 
             type="text" 
             value={data.name} 
             onChange={e => setData('name', e.target.value)} 
             style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
           />
-          {/* Exibe o erro do nome, se houver */}
           {errors.name && <div style={{ color: '#dc2626', fontSize: '14px', marginTop: '5px' }}>{errors.name}</div>}
         </div>
 
@@ -40,10 +61,9 @@ export default function Edit({ type }: { type: Type }) {
           <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Descrição</label>
           <textarea 
             value={data.description} 
-            onChange={e => setData('description', e.target.value)}
-            style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ccc', minHeight: '100px' }}
+            onChange={e => setData('description', e.target.value)} 
+            style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ccc', minHeight: '80px' }}
           />
-          {/* Exibe o erro da descrição, se houver */}
           {errors.description && <div style={{ color: '#dc2626', fontSize: '14px', marginTop: '5px' }}>{errors.description}</div>}
         </div>
 
