@@ -3,18 +3,18 @@ import Locality from '#models/locality'
 
 export default class extends BaseSeeder {
   async run() {
-    await Locality.createMany([
+    await Locality.fetchOrCreateMany('name', [
       {
-        name: 'Parque do Cocó',
-        description: 'Área de preservação ambiental com trilhas ecológicas e parque urbano.',
-        latitude: -3.7483,
-        longitude: -38.4812,
+        name: 'Distrito de Suassurana',
+        description: 'Distrito localizado no município de Iguatu, Ceará, Brasil. Abriga patrimônio histórico ferroviário e áreas de convivência com o semiárido.',
+        latitude: -6.3095,
+        longitude: -39.4118,
       },
       {
-        name: 'Praça do Ferreira',
-        description: 'Histórica praça no centro da cidade, famosa pela Coluna da Hora.',
-        latitude: -3.7275,
-        longitude: -38.5278,
+        name: 'Corral de Piedra',
+        description: 'Comunidade rural no cantão de Nicoya, província de Guanacaste, Costa Rica. Famosa pelo ecossistema do Humedal Corral de Piedra e pela bacia do Rio Tempisque.',
+        latitude: 10.2231,
+        longitude: -85.2891,
       },
     ])
   }

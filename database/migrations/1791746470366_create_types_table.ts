@@ -7,6 +7,15 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
 
+      // Chave estrangeira ligando o Type à Category
+      table
+        .integer('category_id')
+        .unsigned()
+        .references('id')
+        .inTable('categories')
+        .onDelete('CASCADE') // Se a categoria for excluída, exclui os tipos vinculados
+        .notNullable()
+
       table.string('name').notNullable()
       table.text('description').nullable()
 

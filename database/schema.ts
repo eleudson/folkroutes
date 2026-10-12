@@ -61,8 +61,10 @@ export class LocalitySchema extends BaseModel {
 }
 
 export class TypeSchema extends BaseModel {
-  static $columns = ['createdAt', 'description', 'id', 'name', 'updatedAt'] as const
+  static $columns = ['categoryId', 'createdAt', 'description', 'id', 'name', 'updatedAt'] as const
   $columns = TypeSchema.$columns
+  @column()
+  declare categoryId: number
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
   @column()

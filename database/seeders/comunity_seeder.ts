@@ -3,18 +3,18 @@ import Comunity from '#models/comunity'
 
 export default class extends BaseSeeder {
   async run() {
-    await Comunity.createMany([
+    await Comunity.fetchOrCreateMany('name', [
       {
-        name: 'José de Alencar',
-        description: 'Distrito e comunidade rural do município de Iguatu/CE, com vocação para a agricultura familiar e forte tradição comunitária.',
-        latitude: -6.4010,
-        longitude: -39.1670,
-      },
-      {
-        name: 'Suassurana',
-        description: 'Distrito de Iguatu/CE, conhecido por sua histórica estação ferroviária e relevante presença cultural e produtiva na região.',
+        name: 'ADESCE',
+        description: 'Associação de Desenvolvimento Social, Cultural e Econômico de Suassurana (Iguatu, Ceará, Brasil). Organização comunitária voltada para a promoção cultural, turismo comunitário e desenvolvimento sustentável.',
         latitude: -6.3095,
         longitude: -39.4118,
+      },
+      {
+        name: 'ASOTUR',
+        description: 'Asociación de Turismo Rural de Corral de Piedra (Nicoya, Guanacaste, Costa Rica). Organização comunitária focada na conservação dos ecossistemas de mangue/humedal e oferta de roteiros e serviços de turismo rural sustentável.',
+        latitude: 10.2231,
+        longitude: -85.2891,
       },
     ])
   }
