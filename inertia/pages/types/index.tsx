@@ -18,7 +18,7 @@ export default function Index({ types }: { types: Types[] }) {
   return (
     <div style={{ padding: '2rem', fontFamily: 'sans-serif', maxWidth: '800px', margin: '0 auto' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h1>Categorias</h1>
+        <h1>Tipos</h1>
         <Link 
           href="/types/create" 
           style={{ padding: '10px 15px', backgroundColor: '#2563eb', color: 'white', textDecoration: 'none', borderRadius: '5px' }}

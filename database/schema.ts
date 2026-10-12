@@ -22,6 +22,44 @@ export class CategorySchema extends BaseModel {
   declare updatedAt: DateTime | null
 }
 
+export class ComunitySchema extends BaseModel {
+  static $columns = ['createdAt', 'description', 'id', 'latitude', 'longitude', 'name', 'updatedAt'] as const
+  $columns = ComunitySchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column()
+  declare description: string | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare latitude: number
+  @column()
+  declare longitude: number
+  @column()
+  declare name: string
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
+export class LocalitySchema extends BaseModel {
+  static $columns = ['createdAt', 'description', 'id', 'latitude', 'longitude', 'name', 'updatedAt'] as const
+  $columns = LocalitySchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column()
+  declare description: string | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare latitude: number
+  @column()
+  declare longitude: number
+  @column()
+  declare name: string
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
 export class TypeSchema extends BaseModel {
   static $columns = ['createdAt', 'description', 'id', 'name', 'updatedAt'] as const
   $columns = TypeSchema.$columns

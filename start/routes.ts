@@ -13,6 +13,8 @@ import router from '@adonisjs/core/services/router'
 
 const CategoriesController = () => import('#controllers/categories_controller')
 const TypesController = () => import('#controllers/types_controller')
+const LocalitiesController = () => import('#controllers/localities_controller')
+const ComunitiesController = () => import('#controllers/comunities_controller')
 
 router.on('/').renderInertia('home', {}).as('home')
 
@@ -48,3 +50,9 @@ router.resource('categories', CategoriesController)
 
 // CRUD routes of Category
 router.resource('types', TypesController)
+
+// CRUD routes of Locality
+router.resource('localities', LocalitiesController)
+
+// CRUD routes of Comunity
+router.resource('comunities', ComunitiesController)

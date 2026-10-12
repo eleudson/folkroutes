@@ -21,10 +21,18 @@ declare module '@adonisjs/inertia/types' {
     'errors/not_found': ExtractProps<(typeof import('../../inertia/pages/errors/not_found.tsx'))['default']>
     'errors/server_error': ExtractProps<(typeof import('../../inertia/pages/errors/server_error.tsx'))['default']>
     'home': ExtractProps<(typeof import('../../inertia/pages/home.tsx'))['default']>
+    'localities/create': ExtractProps<(typeof import('../../inertia/pages/localities/create.tsx'))['default']>
+    'localities/edit': ExtractProps<(typeof import('../../inertia/pages/localities/edit.tsx'))['default']>
+    'localities/index': ExtractProps<(typeof import('../../inertia/pages/localities/index.tsx'))['default']>
+    'localities/show': ExtractProps<(typeof import('../../inertia/pages/localities/show.tsx'))['default']>
     'map_test_single': ExtractProps<(typeof import('../../inertia/pages/map_test_single.tsx'))['default']>
     'map_test': ExtractProps<(typeof import('../../inertia/pages/map_test.tsx'))['default']>
     'types/create': ExtractProps<(typeof import('../../inertia/pages/types/create.tsx'))['default']>
     'types/edit': ExtractProps<(typeof import('../../inertia/pages/types/edit.tsx'))['default']>
     'types/index': ExtractProps<(typeof import('../../inertia/pages/types/index.tsx'))['default']>
+    'comunities/create': ExtractProps<(typeof import('../../inertia/pages/comunities/create.tsx'))['default']>
+    'comunities/edit': ExtractProps<(typeof import('../../inertia/pages/comunities/edit.tsx'))['default']>
+    'comunities/index': ExtractProps<(typeof import('../../inertia/pages/comunities/index.tsx'))['default']>
+    'comunities/show': ExtractProps<(typeof import('../../inertia/pages/comunities/show.tsx'))['default']>
   }
 }

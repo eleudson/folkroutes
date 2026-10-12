@@ -5,7 +5,9 @@
 
 export const controllers = {
   Categories: () => import('#controllers/categories_controller'),
+  Localities: () => import('#controllers/localities_controller'),
   NewAccount: () => import('#controllers/new_account_controller'),
   Session: () => import('#controllers/session_controller'),
   Types: () => import('#controllers/types_controller'),
+  Comunities: () => import('#controllers/comunities_controller'),
 }

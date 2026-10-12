@@ -132,6 +132,90 @@ const routes = {
     tokens: [{"old":"/types/:id","type":0,"val":"types","end":""},{"old":"/types/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['types.destroy']['types'],
   },
+  'localities.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/localities',
+    tokens: [{"old":"/localities","type":0,"val":"localities","end":""}],
+    types: placeholder as Registry['localities.index']['types'],
+  },
+  'localities.create': {
+    methods: ["GET","HEAD"],
+    pattern: '/localities/create',
+    tokens: [{"old":"/localities/create","type":0,"val":"localities","end":""},{"old":"/localities/create","type":0,"val":"create","end":""}],
+    types: placeholder as Registry['localities.create']['types'],
+  },
+  'localities.store': {
+    methods: ["POST"],
+    pattern: '/localities',
+    tokens: [{"old":"/localities","type":0,"val":"localities","end":""}],
+    types: placeholder as Registry['localities.store']['types'],
+  },
+  'localities.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/localities/:id',
+    tokens: [{"old":"/localities/:id","type":0,"val":"localities","end":""},{"old":"/localities/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['localities.show']['types'],
+  },
+  'localities.edit': {
+    methods: ["GET","HEAD"],
+    pattern: '/localities/:id/edit',
+    tokens: [{"old":"/localities/:id/edit","type":0,"val":"localities","end":""},{"old":"/localities/:id/edit","type":1,"val":"id","end":""},{"old":"/localities/:id/edit","type":0,"val":"edit","end":""}],
+    types: placeholder as Registry['localities.edit']['types'],
+  },
+  'localities.update': {
+    methods: ["PUT","PATCH"],
+    pattern: '/localities/:id',
+    tokens: [{"old":"/localities/:id","type":0,"val":"localities","end":""},{"old":"/localities/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['localities.update']['types'],
+  },
+  'localities.destroy': {
+    methods: ["DELETE"],
+    pattern: '/localities/:id',
+    tokens: [{"old":"/localities/:id","type":0,"val":"localities","end":""},{"old":"/localities/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['localities.destroy']['types'],
+  },
+  'comunities.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/comunities',
+    tokens: [{"old":"/comunities","type":0,"val":"comunities","end":""}],
+    types: placeholder as Registry['comunities.index']['types'],
+  },
+  'comunities.create': {
+    methods: ["GET","HEAD"],
+    pattern: '/comunities/create',
+    tokens: [{"old":"/comunities/create","type":0,"val":"comunities","end":""},{"old":"/comunities/create","type":0,"val":"create","end":""}],
+    types: placeholder as Registry['comunities.create']['types'],
+  },
+  'comunities.store': {
+    methods: ["POST"],
+    pattern: '/comunities',
+    tokens: [{"old":"/comunities","type":0,"val":"comunities","end":""}],
+    types: placeholder as Registry['comunities.store']['types'],
+  },
+  'comunities.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/comunities/:id',
+    tokens: [{"old":"/comunities/:id","type":0,"val":"comunities","end":""},{"old":"/comunities/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['comunities.show']['types'],
+  },
+  'comunities.edit': {
+    methods: ["GET","HEAD"],
+    pattern: '/comunities/:id/edit',
+    tokens: [{"old":"/comunities/:id/edit","type":0,"val":"comunities","end":""},{"old":"/comunities/:id/edit","type":1,"val":"id","end":""},{"old":"/comunities/:id/edit","type":0,"val":"edit","end":""}],
+    types: placeholder as Registry['comunities.edit']['types'],
+  },
+  'comunities.update': {
+    methods: ["PUT","PATCH"],
+    pattern: '/comunities/:id',
+    tokens: [{"old":"/comunities/:id","type":0,"val":"comunities","end":""},{"old":"/comunities/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['comunities.update']['types'],
+  },
+  'comunities.destroy': {
+    methods: ["DELETE"],
+    pattern: '/comunities/:id',
+    tokens: [{"old":"/comunities/:id","type":0,"val":"comunities","end":""},{"old":"/comunities/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['comunities.destroy']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }

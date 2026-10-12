@@ -259,4 +259,172 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/types_controller').default['destroy']>>>
     }
   }
+  'localities.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/localities'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/localities_controller').default['index']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/localities_controller').default['index']>>>
+    }
+  }
+  'localities.create': {
+    methods: ["GET","HEAD"]
+    pattern: '/localities/create'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/localities_controller').default['create']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/localities_controller').default['create']>>>
+    }
+  }
+  'localities.store': {
+    methods: ["POST"]
+    pattern: '/localities'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/localities_controller').default['store']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/localities_controller').default['store']>>>
+    }
+  }
+  'localities.show': {
+    methods: ["GET","HEAD"]
+    pattern: '/localities/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/localities_controller').default['show']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/localities_controller').default['show']>>>
+    }
+  }
+  'localities.edit': {
+    methods: ["GET","HEAD"]
+    pattern: '/localities/:id/edit'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/localities_controller').default['edit']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/localities_controller').default['edit']>>>
+    }
+  }
+  'localities.update': {
+    methods: ["PUT","PATCH"]
+    pattern: '/localities/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/localities_controller').default['update']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/localities_controller').default['update']>>>
+    }
+  }
+  'localities.destroy': {
+    methods: ["DELETE"]
+    pattern: '/localities/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/localities_controller').default['destroy']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/localities_controller').default['destroy']>>>
+    }
+  }
+  'comunities.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/comunities'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/comunities_controller').default['index']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/comunities_controller').default['index']>>>
+    }
+  }
+  'comunities.create': {
+    methods: ["GET","HEAD"]
+    pattern: '/comunities/create'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/comunities_controller').default['create']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/comunities_controller').default['create']>>>
+    }
+  }
+  'comunities.store': {
+    methods: ["POST"]
+    pattern: '/comunities'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/comunities_controller').default['store']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/comunities_controller').default['store']>>>
+    }
+  }
+  'comunities.show': {
+    methods: ["GET","HEAD"]
+    pattern: '/comunities/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/comunities_controller').default['show']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/comunities_controller').default['show']>>>
+    }
+  }
+  'comunities.edit': {
+    methods: ["GET","HEAD"]
+    pattern: '/comunities/:id/edit'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/comunities_controller').default['edit']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/comunities_controller').default['edit']>>>
+    }
+  }
+  'comunities.update': {
+    methods: ["PUT","PATCH"]
+    pattern: '/comunities/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/comunities_controller').default['update']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/comunities_controller').default['update']>>>
+    }
+  }
+  'comunities.destroy': {
+    methods: ["DELETE"]
+    pattern: '/comunities/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/comunities_controller').default['destroy']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/comunities_controller').default['destroy']>>>
+    }
+  }
 }
