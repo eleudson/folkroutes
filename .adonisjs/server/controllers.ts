@@ -4,10 +4,11 @@
  */
 
 export const controllers = {
+  Attractives: () => import('#controllers/attractives_controller'),
   Categories: () => import('#controllers/categories_controller'),
+  Comunities: () => import('#controllers/comunities_controller'),
   Localities: () => import('#controllers/localities_controller'),
   NewAccount: () => import('#controllers/new_account_controller'),
   Session: () => import('#controllers/session_controller'),
   Types: () => import('#controllers/types_controller'),
-  Comunities: () => import('#controllers/comunities_controller'),
 }

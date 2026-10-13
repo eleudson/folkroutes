@@ -49,4 +49,13 @@ export interface ApiDefinition {
     update: typeof routes['comunities.update']
     destroy: typeof routes['comunities.destroy']
   }
+  attractives: {
+    index: typeof routes['attractives.index']
+    create: typeof routes['attractives.create']
+    store: typeof routes['attractives.store']
+    show: typeof routes['attractives.show']
+    edit: typeof routes['attractives.edit']
+    update: typeof routes['attractives.update']
+    destroy: typeof routes['attractives.destroy']
+  }
 }

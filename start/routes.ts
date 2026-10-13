@@ -15,6 +15,7 @@ const CategoriesController = () => import('#controllers/categories_controller')
 const TypesController = () => import('#controllers/types_controller')
 const LocalitiesController = () => import('#controllers/localities_controller')
 const ComunitiesController = () => import('#controllers/comunities_controller')
+const AttractivesController = () => import('#controllers/attractives_controller')
 
 router.on('/').renderInertia('home', {}).as('home')
 
@@ -56,3 +57,6 @@ router.resource('localities', LocalitiesController)
 
 // CRUD routes of Comunity
 router.resource('comunities', ComunitiesController)
+
+// CRUD routes of Attractive
+router.resource('attractives', AttractivesController)

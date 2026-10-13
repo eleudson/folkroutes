@@ -7,6 +7,43 @@
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
+export class AttractiveSchema extends BaseModel {
+  static $columns = ['appreciation', 'createdAt', 'description', 'id', 'latitude', 'localityId', 'longitude', 'name', 'scoreConveniences', 'scoreDifficultyOfAccess', 'scoreInfluenceOfTheClimate', 'scoreInterpretiveDiversity', 'scorePhysicalExertion', 'scoreSecurity', 'typeId', 'updatedAt'] as const
+  $columns = AttractiveSchema.$columns
+  @column()
+  declare appreciation: string | null
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column()
+  declare description: string
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare latitude: number
+  @column()
+  declare localityId: number
+  @column()
+  declare longitude: number
+  @column()
+  declare name: string
+  @column()
+  declare scoreConveniences: number
+  @column()
+  declare scoreDifficultyOfAccess: number
+  @column()
+  declare scoreInfluenceOfTheClimate: number
+  @column()
+  declare scoreInterpretiveDiversity: number
+  @column()
+  declare scorePhysicalExertion: number
+  @column()
+  declare scoreSecurity: number
+  @column()
+  declare typeId: number
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
 export class CategorySchema extends BaseModel {
   static $columns = ['createdAt', 'description', 'id', 'name', 'updatedAt'] as const
   $columns = CategorySchema.$columns

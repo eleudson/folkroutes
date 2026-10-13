@@ -12,11 +12,19 @@ type ExtractProps<T> =
 
 declare module '@adonisjs/inertia/types' {
   export interface InertiaPages {
+    'attractives/create': ExtractProps<(typeof import('../../inertia/pages/attractives/create.tsx'))['default']>
+    'attractives/edit': ExtractProps<(typeof import('../../inertia/pages/attractives/edit.tsx'))['default']>
+    'attractives/index': ExtractProps<(typeof import('../../inertia/pages/attractives/index.tsx'))['default']>
+    'attractives/show': ExtractProps<(typeof import('../../inertia/pages/attractives/show.tsx'))['default']>
     'auth/login': ExtractProps<(typeof import('../../inertia/pages/auth/login.tsx'))['default']>
     'auth/signup': ExtractProps<(typeof import('../../inertia/pages/auth/signup.tsx'))['default']>
     'categories/create': ExtractProps<(typeof import('../../inertia/pages/categories/create.tsx'))['default']>
     'categories/edit': ExtractProps<(typeof import('../../inertia/pages/categories/edit.tsx'))['default']>
     'categories/index': ExtractProps<(typeof import('../../inertia/pages/categories/index.tsx'))['default']>
+    'comunities/create': ExtractProps<(typeof import('../../inertia/pages/comunities/create.tsx'))['default']>
+    'comunities/edit': ExtractProps<(typeof import('../../inertia/pages/comunities/edit.tsx'))['default']>
+    'comunities/index': ExtractProps<(typeof import('../../inertia/pages/comunities/index.tsx'))['default']>
+    'comunities/show': ExtractProps<(typeof import('../../inertia/pages/comunities/show.tsx'))['default']>
     'dashboard': ExtractProps<(typeof import('../../inertia/pages/dashboard.tsx'))['default']>
     'errors/not_found': ExtractProps<(typeof import('../../inertia/pages/errors/not_found.tsx'))['default']>
     'errors/server_error': ExtractProps<(typeof import('../../inertia/pages/errors/server_error.tsx'))['default']>
@@ -30,10 +38,6 @@ declare module '@adonisjs/inertia/types' {
     'types/create': ExtractProps<(typeof import('../../inertia/pages/types/create.tsx'))['default']>
     'types/edit': ExtractProps<(typeof import('../../inertia/pages/types/edit.tsx'))['default']>
     'types/index': ExtractProps<(typeof import('../../inertia/pages/types/index.tsx'))['default']>
-    'comunities/create': ExtractProps<(typeof import('../../inertia/pages/comunities/create.tsx'))['default']>
-    'comunities/edit': ExtractProps<(typeof import('../../inertia/pages/comunities/edit.tsx'))['default']>
-    'comunities/index': ExtractProps<(typeof import('../../inertia/pages/comunities/index.tsx'))['default']>
-    'comunities/show': ExtractProps<(typeof import('../../inertia/pages/comunities/show.tsx'))['default']>
     'types/show': ExtractProps<(typeof import('../../inertia/pages/types/show.tsx'))['default']>
   }
 }

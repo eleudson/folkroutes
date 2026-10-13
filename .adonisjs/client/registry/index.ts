@@ -216,6 +216,48 @@ const routes = {
     tokens: [{"old":"/comunities/:id","type":0,"val":"comunities","end":""},{"old":"/comunities/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['comunities.destroy']['types'],
   },
+  'attractives.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/attractives',
+    tokens: [{"old":"/attractives","type":0,"val":"attractives","end":""}],
+    types: placeholder as Registry['attractives.index']['types'],
+  },
+  'attractives.create': {
+    methods: ["GET","HEAD"],
+    pattern: '/attractives/create',
+    tokens: [{"old":"/attractives/create","type":0,"val":"attractives","end":""},{"old":"/attractives/create","type":0,"val":"create","end":""}],
+    types: placeholder as Registry['attractives.create']['types'],
+  },
+  'attractives.store': {
+    methods: ["POST"],
+    pattern: '/attractives',
+    tokens: [{"old":"/attractives","type":0,"val":"attractives","end":""}],
+    types: placeholder as Registry['attractives.store']['types'],
+  },
+  'attractives.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/attractives/:id',
+    tokens: [{"old":"/attractives/:id","type":0,"val":"attractives","end":""},{"old":"/attractives/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['attractives.show']['types'],
+  },
+  'attractives.edit': {
+    methods: ["GET","HEAD"],
+    pattern: '/attractives/:id/edit',
+    tokens: [{"old":"/attractives/:id/edit","type":0,"val":"attractives","end":""},{"old":"/attractives/:id/edit","type":1,"val":"id","end":""},{"old":"/attractives/:id/edit","type":0,"val":"edit","end":""}],
+    types: placeholder as Registry['attractives.edit']['types'],
+  },
+  'attractives.update': {
+    methods: ["PUT","PATCH"],
+    pattern: '/attractives/:id',
+    tokens: [{"old":"/attractives/:id","type":0,"val":"attractives","end":""},{"old":"/attractives/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['attractives.update']['types'],
+  },
+  'attractives.destroy': {
+    methods: ["DELETE"],
+    pattern: '/attractives/:id',
+    tokens: [{"old":"/attractives/:id","type":0,"val":"attractives","end":""},{"old":"/attractives/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['attractives.destroy']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }

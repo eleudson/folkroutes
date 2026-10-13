@@ -427,4 +427,88 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/comunities_controller').default['destroy']>>>
     }
   }
+  'attractives.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/attractives'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/attractives_controller').default['index']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/attractives_controller').default['index']>>>
+    }
+  }
+  'attractives.create': {
+    methods: ["GET","HEAD"]
+    pattern: '/attractives/create'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/attractives_controller').default['create']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/attractives_controller').default['create']>>>
+    }
+  }
+  'attractives.store': {
+    methods: ["POST"]
+    pattern: '/attractives'
+    types: {
+      body: ExtractBody<InferInput<(typeof import('#validators/attractive_validator').createAttractiveValidator)>>
+      paramsTuple: []
+      params: {}
+      query: ExtractQuery<InferInput<(typeof import('#validators/attractive_validator').createAttractiveValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/attractives_controller').default['store']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/attractives_controller').default['store']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
+  'attractives.show': {
+    methods: ["GET","HEAD"]
+    pattern: '/attractives/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/attractives_controller').default['show']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/attractives_controller').default['show']>>>
+    }
+  }
+  'attractives.edit': {
+    methods: ["GET","HEAD"]
+    pattern: '/attractives/:id/edit'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/attractives_controller').default['edit']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/attractives_controller').default['edit']>>>
+    }
+  }
+  'attractives.update': {
+    methods: ["PUT","PATCH"]
+    pattern: '/attractives/:id'
+    types: {
+      body: ExtractBody<InferInput<(typeof import('#validators/attractive_validator').updateAttractiveValidator)>>
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: ExtractQuery<InferInput<(typeof import('#validators/attractive_validator').updateAttractiveValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/attractives_controller').default['update']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/attractives_controller').default['update']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
+  'attractives.destroy': {
+    methods: ["DELETE"]
+    pattern: '/attractives/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/attractives_controller').default['destroy']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/attractives_controller').default['destroy']>>>
+    }
+  }
 }
