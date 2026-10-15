@@ -10,6 +10,8 @@
 import { middleware } from '#start/kernel'
 import { controllers } from '#generated/controllers'
 import router from '@adonisjs/core/services/router'
+// Importe o DashboardController
+const DashboardController = () => import('#controllers/dashboard_controller')
 
 const CategoriesController = () => import('#controllers/categories_controller')
 const TypesController = () => import('#controllers/types_controller')
@@ -31,11 +33,11 @@ router
 
 router
   .group(() => {
-    router.on('/dashboard').renderInertia('dashboard', {}).as('dashboard')
-    router.post('logout', [controllers.Session, 'destroy'])
+    // Apunte para o controller e método index
+    router.get('/dashboard', [DashboardController, 'index']).as('dashboard')
   })
   .use(middleware.auth())
-
+  
 // Rota direta para renderizar a página de teste do Inertia
 router.get('/teste-mapa-single', ({ inertia }) => {
   return inertia.render('map_test_single')

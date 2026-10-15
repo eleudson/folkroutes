@@ -42,12 +42,6 @@ const routes = {
     tokens: [{"old":"/dashboard","type":0,"val":"dashboard","end":""}],
     types: placeholder as Registry['dashboard']['types'],
   },
-  'session.destroy': {
-    methods: ["POST"],
-    pattern: '/logout',
-    tokens: [{"old":"/logout","type":0,"val":"logout","end":""}],
-    types: placeholder as Registry['session.destroy']['types'],
-  },
   'categories.index': {
     methods: ["GET","HEAD"],
     pattern: '/categories',
