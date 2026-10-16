@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
-import type { HasMany } from '@adonisjs/lucid/types'
-import Attractive from '#models/attractive'
+import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm'
+import type { BelongsTo } from '@adonisjs/lucid/types'
+import Comunity from '#models/comunity'
 
 export default class Locality extends BaseModel {
   @column({ isPrimary: true })
@@ -19,9 +19,11 @@ export default class Locality extends BaseModel {
   @column()
   declare longitude: number
 
-  // Relacionamento: Um tipo pertence a uma categoria
-  @hasMany(() => Attractive)
-  declare attractives: HasMany<typeof Attractive>
+  @column()
+  declare comunityId: number | null
+
+  @belongsTo(() => Comunity)
+  declare comunity: BelongsTo<typeof Comunity>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

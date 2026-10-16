@@ -415,6 +415,18 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/comunities_controller').default['destroy']>>>
     }
   }
+  'attractives.images': {
+    methods: ["GET","HEAD"]
+    pattern: '/attractives/:id/images'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/attractives_controller').default['images']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/attractives_controller').default['images']>>>
+    }
+  }
   'attractives.index': {
     methods: ["GET","HEAD"]
     pattern: '/attractives'

@@ -210,6 +210,12 @@ const routes = {
     tokens: [{"old":"/comunities/:id","type":0,"val":"comunities","end":""},{"old":"/comunities/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['comunities.destroy']['types'],
   },
+  'attractives.images': {
+    methods: ["GET","HEAD"],
+    pattern: '/attractives/:id/images',
+    tokens: [{"old":"/attractives/:id/images","type":0,"val":"attractives","end":""},{"old":"/attractives/:id/images","type":1,"val":"id","end":""},{"old":"/attractives/:id/images","type":0,"val":"images","end":""}],
+    types: placeholder as Registry['attractives.images']['types'],
+  },
   'attractives.index': {
     methods: ["GET","HEAD"],
     pattern: '/attractives',

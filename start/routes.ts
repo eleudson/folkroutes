@@ -18,6 +18,8 @@ const TypesController = () => import('#controllers/types_controller')
 const LocalitiesController = () => import('#controllers/localities_controller')
 const ComunitiesController = () => import('#controllers/comunities_controller')
 const AttractivesController = () => import('#controllers/attractives_controller')
+const ImagesController = () => import('#controllers/images_controller')
+
 
 router.on('/').renderInertia('home', {}).as('home')
 
@@ -37,7 +39,7 @@ router
     router.get('/dashboard', [DashboardController, 'index']).as('dashboard')
   })
   .use(middleware.auth())
-  
+
 // Rota direta para renderizar a página de teste do Inertia
 router.get('/teste-mapa-single', ({ inertia }) => {
   return inertia.render('map_test_single')
@@ -60,5 +62,16 @@ router.resource('localities', LocalitiesController)
 // CRUD routes of Comunity
 router.resource('comunities', ComunitiesController)
 
-// CRUD routes of Attractive
-router.resource('attractives', AttractivesController)
+router
+  .group(() => {
+    // 1. Rota customizada para imagens do atrativo
+    router
+      .get('/attractives/:id/images', [AttractivesController, 'images'])
+      .where('id', router.matchers.number())
+
+    // 2. Resource CRUD de atrativos
+    router
+      .resource('attractives', AttractivesController)
+      .where('id', router.matchers.number())
+  })
+  .use(middleware.auth())

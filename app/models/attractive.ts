@@ -1,8 +1,9 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm'
-import type { BelongsTo } from '@adonisjs/lucid/types'
+import { BaseModel, column, belongsTo, hasMany } from '@adonisjs/lucid/orm'
+import type { BelongsTo, HasMany } from '@adonisjs/lucid/types'
 import Type from '#models/type'
 import Locality from '#models/locality'
+import AttractiveImage from '#models/attractive_image'
 
 export default class Attractive extends BaseModel {
   @column({ isPrimary: true })
@@ -12,7 +13,7 @@ export default class Attractive extends BaseModel {
   declare name: string
 
   @column()
-  declare description: string // Obrigatório
+  declare description: string
 
   @column()
   declare latitude: number
@@ -32,7 +33,6 @@ export default class Attractive extends BaseModel {
   @belongsTo(() => Locality)
   declare locality: BelongsTo<typeof Locality>
 
-  // Único campo opcional/anulável
   @column()
   declare appreciation: string | null
 
@@ -53,6 +53,9 @@ export default class Attractive extends BaseModel {
 
   @column()
   declare scoreInterpretiveDiversity: number
+
+  @hasMany(() => AttractiveImage)
+  declare images: HasMany<typeof AttractiveImage>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

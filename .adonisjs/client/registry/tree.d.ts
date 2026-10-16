@@ -49,6 +49,7 @@ export interface ApiDefinition {
     destroy: typeof routes['comunities.destroy']
   }
   attractives: {
+    images: typeof routes['attractives.images']
     index: typeof routes['attractives.index']
     create: typeof routes['attractives.create']
     store: typeof routes['attractives.store']

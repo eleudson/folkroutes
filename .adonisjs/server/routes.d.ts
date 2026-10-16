@@ -38,6 +38,7 @@ export type ScannedRoutes = {
     'comunities.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'comunities.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'comunities.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'attractives.images': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'attractives.index': { paramsTuple?: []; params?: {} }
     'attractives.create': { paramsTuple?: []; params?: {} }
     'attractives.store': { paramsTuple?: []; params?: {} }
@@ -67,6 +68,7 @@ export type ScannedRoutes = {
     'comunities.create': { paramsTuple?: []; params?: {} }
     'comunities.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'comunities.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'attractives.images': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'attractives.index': { paramsTuple?: []; params?: {} }
     'attractives.create': { paramsTuple?: []; params?: {} }
     'attractives.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
@@ -93,6 +95,7 @@ export type ScannedRoutes = {
     'comunities.create': { paramsTuple?: []; params?: {} }
     'comunities.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'comunities.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'attractives.images': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'attractives.index': { paramsTuple?: []; params?: {} }
     'attractives.create': { paramsTuple?: []; params?: {} }
     'attractives.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }

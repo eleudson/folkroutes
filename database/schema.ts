@@ -7,6 +7,27 @@
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
+export class AttractiveImageSchema extends BaseModel {
+  static $columns = ['attractiveId', 'createdAt', 'fileName', 'id', 'mimeType', 'originalName', 'size', 'updatedAt'] as const
+  $columns = AttractiveImageSchema.$columns
+  @column()
+  declare attractiveId: number
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column()
+  declare fileName: string
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare mimeType: string
+  @column()
+  declare originalName: string
+  @column()
+  declare size: number
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
 export class AttractiveSchema extends BaseModel {
   static $columns = ['appreciation', 'createdAt', 'description', 'id', 'latitude', 'localityId', 'longitude', 'name', 'scoreConveniences', 'scoreDifficultyOfAccess', 'scoreInfluenceOfTheClimate', 'scoreInterpretiveDiversity', 'scorePhysicalExertion', 'scoreSecurity', 'typeId', 'updatedAt'] as const
   $columns = AttractiveSchema.$columns
@@ -79,10 +100,12 @@ export class ComunitySchema extends BaseModel {
 }
 
 export class LocalitySchema extends BaseModel {
-  static $columns = ['createdAt', 'description', 'id', 'latitude', 'longitude', 'name', 'updatedAt'] as const
+  static $columns = ['comunityId', 'createdAt', 'description', 'id', 'latitude', 'longitude', 'name', 'updatedAt'] as const
   $columns = LocalitySchema.$columns
+  @column()
+  declare comunityId: number | null
   @column.dateTime({ autoCreate: true })
-  declare createdAt: DateTime | null
+  declare createdAt: DateTime
   @column()
   declare description: string | null
   @column({ isPrimary: true })

@@ -5,20 +5,23 @@ import Locality from '#models/locality'
 import { createAttractiveValidator, updateAttractiveValidator } from '#validators/attractive_validator'
 
 export default class AttractivesController {
-  // 1. Listagem de atrativos com Tipo (e sua Categoria) e Localidade
+  /**
+   * Lista todos os atrativos
+   */
   async index({ inertia }: HttpContext) {
     const attractives = await Attractive.query()
-      .preload('type', (typeQuery) => {
-        typeQuery.preload('category')
-      })
+      .preload('type', (q) => q.preload('category'))
       .preload('locality')
+      .preload('images')
 
     return inertia.render('attractives/index', {
       attractives: attractives.map((a) => a.serialize()),
     })
   }
 
-  // 2. Formulário de Criação (Envia Tipos com Categoria e Localidades)
+  /**
+   * Formulário de criação de atrativo
+   */
   async create({ inertia }: HttpContext) {
     const types = await Type.query().preload('category')
     const localities = await Locality.all()
@@ -29,7 +32,9 @@ export default class AttractivesController {
     })
   }
 
-  // 3. Salvar novo Atrativo
+  /**
+   * Processa a criação de um novo atrativo
+   */
   async store({ request, response }: HttpContext) {
     const payload = await request.validateUsing(createAttractiveValidator)
     await Attractive.create(payload)
@@ -37,14 +42,15 @@ export default class AttractivesController {
     return response.redirect().toRoute('attractives.index')
   }
 
-  // 4. Detalhes do Atrativo
+  /**
+   * Exibe os detalhes de um atrativo específico
+   */
   async show({ params, inertia }: HttpContext) {
     const attractive = await Attractive.query()
       .where('id', params.id)
-      .preload('type', (typeQuery) => {
-        typeQuery.preload('category')
-      })
+      .preload('type', (q) => q.preload('category'))
       .preload('locality')
+      .preload('images')
       .firstOrFail()
 
     return inertia.render('attractives/show', {
@@ -52,7 +58,24 @@ export default class AttractivesController {
     })
   }
 
-  // 5. Formulário de Edição
+  /**
+   * Exibe a galeria de imagens de um atrativo específico
+   */
+  async images({ params, inertia }: HttpContext) {
+    const attractive = await Attractive.query()
+      .where('id', params.id)
+      .preload('images')
+      .firstOrFail()
+
+    return inertia.render('attractives/images', {
+      attractive: attractive.serialize(),
+      images: attractive.images.map((img) => img.serialize()),
+    })
+  }
+
+  /**
+   * Formulário de edição de atrativo
+   */
   async edit({ params, inertia }: HttpContext) {
     const attractive = await Attractive.findOrFail(params.id)
     const types = await Type.query().preload('category')
@@ -65,7 +88,9 @@ export default class AttractivesController {
     })
   }
 
-  // 6. Atualizar Atrativo
+  /**
+   * Processa a atualização do atrativo
+   */
   async update({ params, request, response }: HttpContext) {
     const attractive = await Attractive.findOrFail(params.id)
     const payload = await request.validateUsing(updateAttractiveValidator)
@@ -76,7 +101,9 @@ export default class AttractivesController {
     return response.redirect().toRoute('attractives.index')
   }
 
-  // 7. Deletar Atrativo
+  /**
+   * Remove o atrativo
+   */
   async destroy({ params, response }: HttpContext) {
     const attractive = await Attractive.findOrFail(params.id)
     await attractive.delete()

@@ -1,24 +1,17 @@
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
 import Attractive from '#models/attractive'
-import Type from '#models/type'
-import Locality from '#models/locality'
 
 export default class extends BaseSeeder {
   async run() {
-    const suassurana = await Locality.findByOrFail('name', 'Distrito de Suassurana')
-    const corralPiedra = await Locality.findByOrFail('name', 'Corral de Piedra')
-
-    const trilha = await Type.findByOrFail('name', 'Trilha Ecológica')
-    const humedal = await Type.findByOrFail('name', 'Área de Conservação / Humedal')
-
-    await Attractive.fetchOrCreateMany('name', [
+    await Attractive.updateOrCreateMany('name', [
       {
         name: 'Trilha do Açude de Suassurana',
-        description: 'Caminhada guiada com interpretação da flora da Caatinga e contemplação do açude histórico.',
-        latitude: -6.3110,
+        description:
+          'Caminhada guiada com interpretação da flora da Caatinga e contemplação do açude histórico.',
+        latitude: -6.311,
         longitude: -39.4125,
-        typeId: trilha.id,
-        localityId: suassurana.id,
+        typeId: 2,
+        localityId: 1, // Bate com o ID de Distrito de Suassurana
         appreciation: 'Atrativo de alto valor comunitário e forte vínculo com a memória local.',
         scoreInfluenceOfTheClimate: 2,
         scorePhysicalExertion: 1,
@@ -28,19 +21,20 @@ export default class extends BaseSeeder {
         scoreInterpretiveDiversity: 2,
       },
       {
-        name: 'Santuário do Humedal Corral de Piedra',
-        description: 'Recorrido em embarcação comunitária para avistamento de aves e conservação do manguezal.',
-        latitude: 10.2245,
-        longitude: -85.2880,
-        typeId: humedal.id,
-        localityId: corralPiedra.id,
-        appreciation: 'Área chave para o ecoturismo e preservação ambiental gerida pela ASOTUR.',
+        name: 'Passeio pelo Humedal Corral de Piedra e Rio Tempisque',
+        description:
+          'Recorrido de barco e navegação observacional pelos ecossistemas de manguezal, lagoas e biodiversidade de aves do Humedal Corral de Piedra.',
+        latitude: 10.2235,
+        longitude: -85.2891,
+        typeId: 2,
+        localityId: 2, // Bate com o ID de Corral de Piedra
+        appreciation: 'Área de relevante valor ecológico e santuário natural comunitário em Nicoya.',
         scoreInfluenceOfTheClimate: 2,
-        scorePhysicalExertion: 0,
+        scorePhysicalExertion: 1,
         scoreSecurity: 2,
         scoreConveniences: 1,
         scoreDifficultyOfAccess: 2,
-        scoreInterpretiveDiversity: 2,
+        scoreInterpretiveDiversity: 3,
       },
     ])
   }

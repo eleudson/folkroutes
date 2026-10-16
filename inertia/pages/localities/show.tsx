@@ -1,73 +1,84 @@
-import React from 'react'
-import { Link } from '@inertiajs/react'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
-import L from 'leaflet'
+import { Head, Link } from '@inertiajs/react'
 
-// Correção do ícone padrão do Leaflet que costuma "sumir" no React
-import icon from 'leaflet/dist/images/marker-icon.png'
-import iconShadow from 'leaflet/dist/images/marker-shadow.png'
+interface ImageItem {
+  id: number
+  url: string
+  originalName: string
+}
 
-const DefaultIcon = L.icon({
-  iconUrl: icon,
-  shadowUrl: iconShadow,
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-})
-L.Marker.prototype.options.icon = DefaultIcon
+interface Attractive {
+  id: number
+  name: string
+  description: string
+  type?: { name: string }
+  images?: ImageItem[]
+}
 
 interface Locality {
   id: number
   name: string
-  description: string
-  latitude: number
-  longitude: number
+  description: string | null
+  attractives?: Attractive[]
 }
 
 export default function Show({ locality }: { locality: Locality }) {
-  // Converte as coordenadas para o formato exigido pelo Leaflet [latitude, longitude]
-  const position: [number, number] = [locality.latitude, locality.longitude]
-
   return (
-    <div style={{ padding: '2rem', fontFamily: 'sans-serif', maxWidth: '800px', margin: '0 auto' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-        <h1>Detalhes da Localidade</h1>
-        <Link 
-          href="/localities" 
-          style={{ padding: '10px 15px', backgroundColor: '#e5e7eb', color: '#374151', textDecoration: 'none', borderRadius: '5px' }}
-        >
-          Voltar para Lista
-        </Link>
-      </div>
+    <>
+      <Head title={locality.name} />
 
-      <div style={{ backgroundColor: '#f9fafb', padding: '1.5rem', borderRadius: '8px', marginBottom: '2rem', border: '1px solid #e5e7eb' }}>
-        <h2 style={{ margin: '0 0 10px 0', color: '#111827' }}>{locality.name}</h2>
-        <p style={{ margin: '0 0 15px 0', color: '#4b5563' }}>{locality.description}</p>
-        <div style={{ display: 'flex', gap: '20px', fontSize: '14px', color: '#6b7280' }}>
-          <span><strong>Latitude:</strong> {locality.latitude}</span>
-          <span><strong>Longitude:</strong> {locality.longitude}</span>
+      <div className="container mx-auto p-6 max-w-5xl">
+        {/* Detalhes da Localidade */}
+        <div className="bg-white p-6 rounded-xl shadow-sm border mb-8">
+          <h1 className="text-3xl font-bold mb-3 text-gray-800">{locality.name}</h1>
+          <p className="text-gray-600 leading-relaxed">
+            {locality.description || 'Nenhuma descrição informada.'}
+          </p>
         </div>
-      </div>
 
-      {/* Container do Mapa */}
-      <div style={{ border: '2px solid #ccc', borderRadius: '8px', overflow: 'hidden' }}>
-        <MapContainer 
-          center={position} 
-          zoom={14} 
-          style={{ height: '400px', width: '100%', zIndex: 0 }}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={position}>
-            <Popup>
-              <strong>{locality.name}</strong> <br />
-              Este é o local cadastrado.
-            </Popup>
-          </Marker>
-        </MapContainer>
+        {/* Lista de Atrativos da Localidade */}
+        <h2 className="text-2xl font-bold mb-4 text-gray-800">
+          Atrativos em {locality.name}
+        </h2>
+
+        {locality.attractives && locality.attractives.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {locality.attractives.map((attr) => (
+              <div key={attr.id} className="bg-white rounded-lg border overflow-hidden shadow-sm hover:shadow-md transition">
+                {attr.images && attr.images.length > 0 ? (
+                  <img
+                    src={attr.images[0].url}
+                    alt={attr.name}
+                    className="w-full h-40 object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-40 bg-gray-100 flex items-center justify-center text-gray-400 text-sm">
+                    Sem imagem
+                  </div>
+                )}
+
+                <div className="p-4">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-indigo-600">
+                    {attr.type?.name || 'Atrativo'}
+                  </span>
+                  <h3 className="font-bold text-lg mt-1 mb-2 text-gray-800">{attr.name}</h3>
+                  <p className="text-sm text-gray-600 line-clamp-2 mb-4">{attr.description}</p>
+                  
+                  <Link
+                    href={`/attractives/${attr.id}`}
+                    className="inline-block text-sm font-medium text-indigo-600 hover:text-indigo-800"
+                  >
+                    Ver detalhes →
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="p-8 text-center text-gray-500 bg-gray-50 rounded-xl border">
+            Nenhum atrativo cadastrado para esta localidade ainda.
+          </div>
+        )}
       </div>
-    </div>
+    </>
   )
 }

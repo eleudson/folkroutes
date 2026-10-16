@@ -14,6 +14,22 @@ export default class LocalitiesController {
     })
   }
 
+/**
+   * Exibe os detalhes de uma localidade e seus atrativos
+   */
+  async show({ params, inertia }: HttpContext) {
+    const locality = await Locality.query()
+      .where('id', params.id)
+      .preload('attractives', (query) => {
+        query.preload('type').preload('images')
+      })
+      .firstOrFail()
+
+    return inertia.render('localities/show', {
+      locality: locality.serialize(),
+    })
+  }
+    
   // 2. Salvar no banco (Recebe um POST do React)
   async store({ request, response }: HttpContext) {
     const payload = await request.validateUsing(createLocalityValidator)

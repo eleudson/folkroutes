@@ -14,6 +14,7 @@ declare module '@adonisjs/inertia/types' {
   export interface InertiaPages {
     'attractives/create': ExtractProps<(typeof import('../../inertia/pages/attractives/create.tsx'))['default']>
     'attractives/edit': ExtractProps<(typeof import('../../inertia/pages/attractives/edit.tsx'))['default']>
+    'attractives/images': ExtractProps<(typeof import('../../inertia/pages/attractives/images.tsx'))['default']>
     'attractives/index': ExtractProps<(typeof import('../../inertia/pages/attractives/index.tsx'))['default']>
     'attractives/show': ExtractProps<(typeof import('../../inertia/pages/attractives/show.tsx'))['default']>
     'auth/login': ExtractProps<(typeof import('../../inertia/pages/auth/login.tsx'))['default']>
